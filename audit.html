@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Free Audit — Jesse Lopez Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#0B1929; --navy-mid:#0f2238; --teal-dark:#0F9D8A; --teal:#2DD4BF; --off-white:#F4F7FA; --slate:#8BA7BF; --white:#FFFFFF; --card-bg:#112237; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;background:var(--navy);color:var(--off-white);font-size:16px;line-height:1.65;}
+  h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:600;}
+  .container{max-width:720px;margin:0 auto;padding:0 24px;}
+  nav{background:rgba(11,25,41,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.1);padding:0 24px;}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1140px;margin:0 auto;}
+  .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .logo-img{width:36px;height:36px;object-fit:contain;}
+  .nav-brand-name{font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;color:var(--off-white);line-height:1.1;}
+  .nav-brand-sub{font-family:'Manrope',sans-serif;font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);}
+  .nav-back{font-family:'Manrope',sans-serif;font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s;}
+  .nav-back:hover{color:var(--teal);}
+  .audit-hero{background:var(--navy);padding:80px 0 60px;text-align:center;position:relative;overflow:hidden;}
+  .audit-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(45,212,191,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,0.04) 1px,transparent 1px);background-size:60px 60px;}
+  .audit-hero .label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:16px;}
+  .audit-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:16px;position:relative;}
+  .audit-hero h1 span{color:var(--teal);}
+  .audit-hero p{color:var(--slate);max-width:500px;margin:0 auto;position:relative;}
+  .audit-form-wrap{padding:60px 0 100px;}
+  .form-card{background:var(--card-bg);border:1px solid rgba(45,212,191,0.12);border-radius:14px;padding:48px;}
+  .form-section{margin-bottom:40px;}
+  .form-section-label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(45,212,191,0.1);}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+  .form-group label{font-family:'Manrope',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--slate);}
+  .form-group input,.form-group select,.form-group textarea{background:var(--navy);border:1px solid rgba(139,167,191,0.2);border-radius:6px;padding:12px 16px;font-family:'Inter',sans-serif;font-size:14px;color:var(--off-white);outline:none;transition:border-color 0.2s;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--teal);}
+  .form-group select option{background:var(--navy);}
+  .form-group textarea{resize:vertical;min-height:90px;}
+  .pain-label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:600;color:var(--slate);margin-bottom:6px;}
+  .pain-num{display:inline-block;width:20px;height:20px;background:var(--teal);color:var(--navy);border-radius:50%;font-family:'Manrope',sans-serif;font-size:11px;font-weight:800;text-align:center;line-height:20px;margin-right:8px;}
+  .submit-wrap{text-align:center;margin-top:40px;}
+  .btn-submit{display:inline-block;padding:16px 48px;background:var(--teal);color:var(--navy);border:none;border-radius:6px;font-family:'Manrope',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.04em;cursor:pointer;transition:all 0.2s;}
+  .btn-submit:hover{background:#25bfac;transform:translateY(-1px);}
+  .form-note{font-size:12px;color:var(--slate);margin-top:16px;}
+  @media(max-width:600px){.form-row{grid-template-columns:1fr;}.form-card{padding:28px 20px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="Mark Only.svg" alt="Jesse Lopez Consulting" class="logo-img">
+      <div>
+        <div class="nav-brand-name">Jesse Lopez</div>
+        <div class="nav-brand-sub">Consulting</div>
+      </div>
+    </a>
+    <a href="index.html" class="nav-back">← Back to Home</a>
+  </div>
+</nav>
+
+<section class="audit-hero">
+  <div class="audit-hero-grid"></div>
+  <div class="container">
+    <span class="label">Free Audit</span>
+    <h1>Let's find your <span>biggest bottleneck.</span></h1>
+    <p>Fill out the form below and we'll reach out to schedule your free 30-minute audit. No commitment. No pitch deck. Just clarity.</p>
+  </div>
+</section>
+
+<section class="audit-form-wrap">
+  <div class="container">
+    <div class="form-card">
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="hidden" name="_subject" value="New Audit Request — Jesse Lopez Consulting">
+        <input type="hidden" name="_to" value="info@jesselopezconsulting.com">
+
+        <!-- CONTACT INFO -->
+        <div class="form-section">
+          <div class="form-section-label">Your Contact Information</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_name">First Name *</label>
+              <input type="text" id="first_name" name="first_name" required placeholder="John">
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name *</label>
+              <input type="text" id="last_name" name="last_name" required placeholder="Smith">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cell">Cell Phone *</label>
+              <input type="tel" id="cell" name="cell_phone" required placeholder="(714) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="john@yourbusiness.com">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="best_time">Best Time to Contact *</label>
+            <select id="best_time" name="best_time" required>
+              <option value="" disabled selected>Select a time window</option>
+              <option>Morning (8AM – 11AM)</option>
+              <option>Midday (11AM – 1PM)</option>
+              <option>Afternoon (1PM – 4PM)</option>
+              <option>Evening (4PM – 6PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- BUSINESS INFO -->
+        <div class="form-section">
+          <div class="form-section-label">About Your Business</div>
+          <div class="form-group">
+            <label for="business_name">Business Name *</label>
+            <input type="text" id="business_name" name="business_name" required placeholder="Your Business LLC">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="employees">Number of Employees *</label>
+              <select id="employees" name="num_employees" required>
+                <option value="" disabled selected>Select range</option>
+                <option>1 – 5</option>
+                <option>6 – 15</option>
+                <option>16 – 50</option>
+                <option>51 – 100</option>
+                <option>100+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="industry">Industry / Service You Provide *</label>
+              <input type="text" id="industry" name="industry" required placeholder="e.g. Healthcare, Legal, Retail">
+            </div>
+          </div>
+        </div>
+
+        <!-- PAIN POINTS -->
+        <div class="form-section">
+          <div class="form-section-label">Your Top 3 Pain Points</div>
+          <div class="form-group">
+            <label><span class="pain-num">1</span>Pain Point One *</label>
+            <textarea name="pain_point_1" required placeholder="e.g. We manually enter data from emails into our CRM every day..."></textarea>
+          </div>
+          <div class="form-group">
+            <label><span class="pain-num">2</span>Pain Point Two *</label>
+            <textarea name="pain_point_2" required placeholder="e.g. Our invoicing process takes 3 days and we still miss payments..."></textarea>
+          </div>
+          <div class="form-group">
+            <label><span class="pain-num">3</span>Pain Point Three *</label>
+            <textarea name="pain_point_3" required placeholder="e.g. Our team has no visibility into weekly priorities..."></textarea>
+          </div>
+        </div>
+
+        <div class="submit-wrap">
+          <button type="submit" class="btn-submit">Submit My Audit Request</button>
+          <p class="form-note">We'll respond within 1 business day · info@jesselopezconsulting.com</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
