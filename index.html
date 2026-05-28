@@ -38,17 +38,26 @@
   .delay-4 { transition-delay: 0.4s; }
 
   /* NAV */
-  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,25,41,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(45,212,191,0.1); }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,25,41,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(45,212,191,0.1); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
   .logo-img { width: 36px; height: 36px; object-fit: contain; }
   .nav-brand-text { display: flex; flex-direction: column; }
   .nav-brand-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: var(--off-white); line-height: 1.1; }
   .nav-brand-sub { font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
-  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
   .nav-links a { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--teal); }
-  .nav-cta { margin-left: 16px; padding: 9px 20px; font-size: 13px; }
+  .nav-cta { margin-left: 12px; padding: 9px 20px; font-size: 13px; }
+
+  /* DROPDOWN */
+  .nav-dropdown { position: relative; }
+  .nav-dropdown > a { display: flex; align-items: center; gap: 4px; }
+  .nav-dropdown > a::after { content: '▾'; font-size: 10px; }
+  .dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); left: 0; background: var(--card-bg); border: 1px solid rgba(45,212,191,0.15); border-radius: 8px; min-width: 220px; padding: 8px 0; z-index: 200; }
+  .nav-dropdown:hover .dropdown-menu { display: block; }
+  .dropdown-menu a { display: block; padding: 10px 20px; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: all 0.15s; }
+  .dropdown-menu a:hover { color: var(--teal); background: rgba(45,212,191,0.05); padding-left: 24px; }
 
   /* HERO */
   .hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; background: var(--navy); }
@@ -61,43 +70,20 @@
   .hero-subhead { font-size: 1.1rem; color: var(--slate); max-width: 620px; margin-bottom: 40px; line-height: 1.7; }
   .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
 
-  /* TRUST */
-  .trust { background: var(--white); padding: 60px 0; }
-  .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .trust-card { background: var(--off-white); border-radius: 8px; padding: 28px; border-left: 3px solid var(--teal-dark); }
-  .trust-quote { font-size: 0.95rem; color: #334155; line-height: 1.6; margin-bottom: 16px; font-style: italic; }
-  .trust-author { font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 13px; color: var(--navy); }
-  .trust-role { font-size: 12px; color: #64748b; margin-top: 2px; }
-
-  /* PROBLEM */
-  .problem { background: var(--navy-mid); padding: 100px 0; }
-  .problem-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-  .problem h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin-bottom: 20px; }
-  .problem-body { color: var(--slate); margin-bottom: 32px; }
-  .pain-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .pain-list li { display: flex; align-items: flex-start; gap: 12px; color: var(--off-white); font-size: 0.95rem; }
-  .pain-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); margin-top: 8px; flex-shrink: 0; }
-  .stat-card { background: var(--card-bg); border: 1px solid rgba(45,212,191,0.15); border-radius: 12px; padding: 40px; text-align: center; }
-  .stat-number { font-family: 'Manrope', sans-serif; font-size: 3.5rem; font-weight: 800; color: var(--teal); line-height: 1; }
-  .stat-label { color: var(--slate); font-size: 0.9rem; margin-top: 10px; }
-
-  /* SOLUTION */
-  .solution { background: var(--white); padding: 100px 0; }
-  .solution-header { text-align: center; margin-bottom: 60px; }
-  .solution-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin: 12px 0; }
-  .solution-header p { color: #64748b; max-width: 540px; margin: 0 auto; }
-  .solution-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  /* SERVICES */
+  .services { background: var(--white); padding: 100px 0; }
+  .services-header { text-align: center; margin-bottom: 60px; }
+  .services-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin: 12px 0; }
+  .services-header p { color: #64748b; max-width: 540px; margin: 0 auto; }
+  .how-we-work { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 64px; }
   .sol-col { text-align: center; padding: 32px 24px; border-radius: 10px; border: 1px solid #e2e8f0; }
   .sol-num { font-family: 'Manrope', sans-serif; font-size: 2rem; font-weight: 800; color: var(--teal-dark); line-height: 1; margin-bottom: 16px; }
   .sol-col h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; }
   .sol-col p { font-size: 0.9rem; color: #64748b; }
-
-  /* SERVICES */
-  .services { background: var(--off-white); padding: 100px 0; }
-  .services-header { text-align: center; margin-bottom: 56px; }
-  .services-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin: 12px 0; }
+  .services-divider { text-align: center; margin-bottom: 48px; }
+  .services-divider h3 { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); }
   .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .svc-card { background: var(--white); border-radius: 10px; padding: 32px; border: 1px solid #e2e8f0; position: relative; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+  .svc-card { background: var(--off-white); border-radius: 10px; padding: 32px; border: 1px solid #e2e8f0; position: relative; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
   .svc-card:hover { box-shadow: 0 8px 32px rgba(15,157,138,0.12); transform: translateY(-3px); }
   .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
   .svc-card:hover::after { transform: scaleX(1); }
@@ -105,7 +91,7 @@
   .svc-card h3 { font-size: 1.05rem; color: var(--navy); margin-bottom: 10px; }
   .svc-card p { font-size: 0.88rem; color: #64748b; line-height: 1.6; }
 
-  /* DIFFERENTIATOR */
+  /* WHY JESSE LOPEZ */
   .diff { background: var(--navy); padding: 100px 0; }
   .diff-header { text-align: center; margin-bottom: 56px; }
   .diff-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin: 12px 0; }
@@ -117,15 +103,42 @@
   .diff-card p { font-size: 0.82rem; color: var(--slate); }
   .diff-quote { background: var(--card-bg); border: 1px solid rgba(45,212,191,0.15); border-radius: 10px; padding: 32px 40px; text-align: center; font-size: 1.05rem; color: var(--off-white); font-style: italic; }
 
+  /* SOUND FAMILIAR */
+  .familiar { background: var(--off-white); padding: 100px 0; }
+  .familiar-header { text-align: center; margin-bottom: 56px; }
+  .familiar-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin: 12px 0; }
+  .familiar-header p { color: #64748b; max-width: 540px; margin: 0 auto; }
+  .familiar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .familiar-card { background: var(--white); border-radius: 10px; padding: 32px; border: 1px solid #e2e8f0; border-top: 3px solid var(--teal); transition: box-shadow 0.2s, transform 0.2s; }
+  .familiar-card:hover { box-shadow: 0 8px 32px rgba(15,157,138,0.1); transform: translateY(-3px); }
+  .familiar-category { font-family: 'Manrope', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 14px; }
+  .familiar-complaint { font-size: 0.95rem; color: #334155; font-style: italic; line-height: 1.65; margin-bottom: 20px; }
+  .familiar-solution { font-size: 0.82rem; color: var(--teal-dark); font-weight: 600; font-family: 'Manrope', sans-serif; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+
+  /* ABOUT */
+  .about { background: var(--navy-mid); padding: 100px 0; }
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .about-photo { position: relative; }
+  .about-photo img { width: 100%; border-radius: 12px; object-fit: cover; max-height: 520px; display: block; }
+  .about-photo-caption { background: var(--card-bg); border-radius: 0 0 12px 12px; padding: 20px 24px; }
+  .about-photo-caption h4 { font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 700; color: var(--off-white); }
+  .about-photo-caption p { font-size: 12px; color: var(--slate); margin-top: 2px; }
+  .about-text h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--white); margin: 12px 0 24px; }
+  .about-text p { color: var(--slate); line-height: 1.75; margin-bottom: 20px; font-size: 0.95rem; }
+  .about-stat-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 32px 0; }
+  .about-stat { background: var(--card-bg); border: 1px solid rgba(45,212,191,0.12); border-radius: 8px; padding: 20px; text-align: center; }
+  .about-stat-num { font-family: 'Manrope', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--teal); }
+  .about-stat-label { font-size: 11px; color: var(--slate); margin-top: 4px; }
+
   /* COMMUNITY */
   .community { background: var(--white); padding: 100px 0; }
   .community-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .community-text { border-left: 4px solid var(--teal); padding-left: 32px; }
-  .community-text h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--navy); margin: 12px 0 20px; }
+  .community-slogan { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 12px; }
+  .community-text h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--navy); margin-bottom: 20px; }
   .community-text p { color: #475569; line-height: 1.7; margin-bottom: 16px; }
-  .community-visual { background: var(--navy); border-radius: 12px; padding: 48px; text-align: center; }
-  .community-visual h3 { font-family: 'Manrope', sans-serif; font-size: 1.1rem; color: var(--teal); margin-bottom: 12px; }
-  .community-visual p { color: var(--slate); font-size: 0.9rem; }
+  .community-image { border-radius: 12px; overflow: hidden; }
+  .community-image img { width: 100%; display: block; object-fit: cover; max-height: 400px; }
 
   /* CTA */
   .cta-section { background: var(--navy-mid); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
@@ -134,15 +147,26 @@
   .cta-section h2 { font-size: clamp(1.6rem, 3vw, 2.6rem); color: var(--white); margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
   .cta-section p { color: var(--slate); max-width: 520px; margin: 0 auto 40px; }
 
+  /* RECOMMENDATIONS */
+  .recommendations { background: var(--navy); padding: 100px 0; }
+  .rec-header { text-align: center; margin-bottom: 56px; }
+  .rec-header h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--white); margin: 12px 0; }
+  .rec-header p { color: var(--slate); max-width: 500px; margin: 0 auto; }
+  .rec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .rec-card { background: var(--card-bg); border-radius: 10px; padding: 32px; border: 1px solid rgba(45,212,191,0.1); border-left: 3px solid var(--teal-dark); }
+  .rec-quote { font-size: 0.95rem; color: var(--off-white); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .rec-author { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 13px; color: var(--teal); }
+  .rec-role { font-size: 12px; color: var(--slate); margin-top: 4px; }
+
   /* FOOTER */
   footer { background: #060f1a; padding: 60px 0 0; }
-  .footer-top { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-  .footer-logo-img { width: 32px; height: 32px; object-fit: contain; }
+  .footer-inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .footer-logo { width: 32px; height: 32px; object-fit: contain; }
   .footer-brand-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: var(--off-white); }
-  .footer-brand-consulting { font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+  .footer-brand-sub { font-family: 'Manrope', sans-serif; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
   .footer-tagline { color: var(--slate); font-size: 0.85rem; margin-bottom: 8px; }
-  .footer-contact { color: #3a5570; font-size: 11px; }
+  .footer-contact { color: #3a5570; font-size: 11px; line-height: 1.8; }
   .footer-col h4 { font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 16px; }
   .footer-col a { display: block; color: var(--slate); font-size: 13px; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
   .footer-col a:hover { color: var(--teal); }
@@ -155,9 +179,10 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .nav-links { display: none; }
-    .trust-grid, .solution-cols, .services-grid, .diff-grid { grid-template-columns: 1fr; }
-    .problem-inner, .community-inner { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
+    .how-we-work, .services-grid, .diff-grid, .familiar-grid, .rec-grid { grid-template-columns: 1fr; }
+    .about-inner, .community-inner { grid-template-columns: 1fr; }
+    .about-stat-row { grid-template-columns: repeat(2, 1fr); }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     .hero-content { padding: 80px 24px; }
   }
@@ -169,18 +194,28 @@
 <nav>
   <div class="container nav-inner">
     <a href="#" class="nav-brand">
-      <img src="Mark Only.svg" alt="Jesse Lopez Consulting Mark" class="logo-img">
+      <img src="Mark Only.svg" alt="Jesse Lopez Consulting" class="logo-img">
       <div class="nav-brand-text">
         <span class="nav-brand-name">Jesse Lopez</span>
         <span class="nav-brand-sub">Consulting</span>
       </div>
     </a>
     <div class="nav-links">
-      <a href="#services">Services</a>
+      <div class="nav-dropdown">
+        <a href="#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="#services">Audit Map</a>
+          <a href="#services">Quick Wins</a>
+          <a href="#services">Department Sprint</a>
+          <a href="#services">Full Office Automation</a>
+          <a href="#services">Monthly Care Plan</a>
+          <a href="#services">AI Integration</a>
+        </div>
+      </div>
       <a href="#about">About</a>
-      <a href="#community">Community</a>
+      <a href="#recommendations">Recommendations</a>
       <a href="#cta">Contact</a>
-      <a href="#cta" class="btn btn-ghost nav-cta">Book an Audit</a>
+      <a href="audit.html" class="btn btn-ghost nav-cta">Book an Audit</a>
     </div>
   </div>
 </nav>
@@ -200,68 +235,21 @@
       We align your team, streamline your operations, and deliver systems that actually work — so your business runs the way it was meant to.
     </p>
     <div class="hero-actions fade-in delay-3">
-      <a href="#cta" class="btn btn-primary">Book a Free Audit</a>
-      <a href="#about" class="btn btn-ghost">See How It Works</a>
+      <a href="audit.html" class="btn btn-primary">Book a Free Audit</a>
+      <a href="#services" class="btn btn-ghost">See How It Works</a>
     </div>
   </div>
 </section>
 
-<!-- TRUST -->
-<section class="trust">
+<!-- SERVICES -->
+<section class="services" id="services">
   <div class="container">
-    <div class="trust-grid">
-      <div class="trust-card fade-in">
-        <p class="trust-quote">"One project streamlined an archaic refund process by introducing automation — reducing handling and approval time by 80%. Due to its success, the tool expanded across multiple lanes of the organization."</p>
-        <div class="trust-author">Amy Milunas</div>
-        <div class="trust-role">SVP, Internal Performance · Sonrava Healthcare</div>
-      </div>
-      <div class="trust-card fade-in delay-1">
-        <p class="trust-quote">"Delivered ahead of schedule — considered user needs AND management priorities."</p>
-        <div class="trust-author">Joan Toves</div>
-        <div class="trust-role">Accounting Director, Sonrava Health</div>
-      </div>
-      <div class="trust-card fade-in delay-2">
-        <p class="trust-quote">"He didn't just solve the problem — he made sure we understood it too."</p>
-        <div class="trust-author">Eva Medina</div>
-        <div class="trust-role">Business Analyst</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
-<section class="problem" id="about">
-  <div class="container">
-    <div class="problem-inner">
-      <div>
-        <span class="label fade-in">The problem</span>
-        <h2 class="fade-in delay-1">You didn't start your business to fight with technology.</h2>
-        <p class="problem-body fade-in delay-2">Most businesses have the right people — but broken processes holding them back. Here's what that looks like:</p>
-        <ul class="pain-list">
-          <li class="fade-in delay-1">Processes became messy as the team grew</li>
-          <li class="fade-in delay-2">Systems stopped talking to each other</li>
-          <li class="fade-in delay-3">Manual work multiplied faster than headcount</li>
-          <li class="fade-in delay-4">Reporting became unreliable and inconsistent</li>
-          <li class="fade-in">Technology created stress instead of solving it</li>
-        </ul>
-      </div>
-      <div class="stat-card fade-in delay-2">
-        <div class="stat-number">$12M+</div>
-        <div class="stat-label">in operational value delivered through process optimization and automation projects</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SOLUTION -->
-<section class="solution" id="solution">
-  <div class="container">
-    <div class="solution-header">
-      <span class="label" style="color:var(--teal-dark)">How we work</span>
+    <div class="services-header fade-in">
+      <span class="label" style="color:var(--teal-dark)">What we do & how we do it</span>
       <h2 style="color:var(--navy)">We simplify the chaos.</h2>
-      <p>Systems that run smoothly. People who work confidently.</p>
+      <p>We start with your people. We fix your process. We deliver your best product.</p>
     </div>
-    <div class="solution-cols">
+    <div class="how-we-work">
       <div class="sol-col fade-in">
         <div class="sol-num">01</div>
         <h3>Ask the right questions first</h3>
@@ -278,53 +266,46 @@
         <p>We don't disappear after delivery. We make sure your people can operate without us.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="services-header">
-      <span class="label" style="color:var(--teal-dark)">What we offer</span>
-      <h2>Services built for real business problems.</h2>
+    <div class="services-divider fade-in">
+      <h3>Our Services</h3>
     </div>
     <div class="services-grid">
       <div class="svc-card fade-in">
-        <div class="svc-num">01 — Automation Audit</div>
-        <h3>Map Your Biggest Pain Points</h3>
-        <p>Identify your top 3–5 manual bottlenecks. Fixed price. Clear ROI roadmap delivered.</p>
+        <div class="svc-num">01 — Audit Map</div>
+        <h3>Your Biggest Pain Points</h3>
+        <p>Identify your top 3–5 manual bottlenecks. Fixed price. Clear roadmap delivered.</p>
       </div>
       <div class="svc-card fade-in delay-1">
-        <div class="svc-num">02 — Quick Win Flow Build</div>
+        <div class="svc-num">02 — Quick Wins</div>
         <h3>One End-to-End Workflow</h3>
-        <p>Built, automated, and documented. Delivered in days — not months.</p>
+        <p>Built, documented, and automated. Delivered in days — not months.</p>
       </div>
       <div class="svc-card fade-in delay-2">
         <div class="svc-num">03 — Department Sprint</div>
-        <h3>3-Week Build</h3>
+        <h3>Full Department Transformation</h3>
         <p>Flows, apps, SharePoint, and team training. Flexible contract options available.</p>
       </div>
       <div class="svc-card fade-in">
         <div class="svc-num">04 — Full Office Automation</div>
         <h3>Discovery Through Delivery</h3>
-        <p>End-to-end implementation. Support for specialized 1099/C2C corporate engagements.</p>
+        <p>End-to-end implementation. Support for specialized corporate engagements.</p>
       </div>
       <div class="svc-card fade-in delay-1">
         <div class="svc-num">05 — Monthly Care Plan</div>
-        <h3>Ongoing Build, Fix & Optimize</h3>
+        <h3>Ongoing Support. Fix & Optimize.</h3>
         <p>One retainer. Continuous improvement. Clean, transparent corporate onboarding.</p>
       </div>
       <div class="svc-card fade-in delay-2">
-        <div class="svc-num">06 — Website Builds</div>
-        <h3>Clean, Professional Presence</h3>
-        <p>For businesses that need a strong digital front door — built and handed off.</p>
+        <div class="svc-num">06 — AI Integration</div>
+        <h3>Make Your Business Smarter</h3>
+        <p>You already have the people and the process. Now we connect AI to what you've already built — without disrupting what's working.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DIFFERENTIATOR -->
-<section class="diff" id="differentiator">
+<!-- WHY JESSE LOPEZ -->
+<section class="diff" id="why">
   <div class="container">
     <div class="diff-header">
       <span class="label">Why Jesse Lopez</span>
@@ -359,19 +340,102 @@
   </div>
 </section>
 
+<!-- SOUND FAMILIAR -->
+<section class="familiar" id="familiar">
+  <div class="container">
+    <div class="familiar-header">
+      <span class="label" style="color:var(--teal-dark)">Sound familiar?</span>
+      <h2 style="color:var(--navy)">Real problems we've solved for businesses like yours.</h2>
+      <p>If you've said any of these out loud — you're in the right place.</p>
+    </div>
+    <div class="familiar-grid">
+      <div class="familiar-card fade-in">
+        <div class="familiar-category">💰 Finance</div>
+        <p class="familiar-complaint">"I have no idea where my cash actually stands until my accountant tells me — and by then it's too late to do anything about it."</p>
+        <div class="familiar-solution">→ Real-time cash flow visibility connected directly to QuickBooks and PayPal. No spreadsheets. No waiting.</div>
+      </div>
+      <div class="familiar-card fade-in delay-1">
+        <div class="familiar-category">📄 Invoicing</div>
+        <p class="familiar-complaint">"I have customers that owe me money and I'm too busy to chase them down every week."</p>
+        <div class="familiar-solution">→ Automated invoice follow-up sequences that go out on schedule — so you get paid without the awkward calls.</div>
+      </div>
+      <div class="familiar-card fade-in delay-2">
+        <div class="familiar-category">👥 Customers</div>
+        <p class="familiar-complaint">"My CRM is a mess. I have duplicate contacts, dead leads, and no idea who my best customers actually are."</p>
+        <div class="familiar-solution">→ HubSpot cleanup and maintenance workflows that keep your pipeline clean and your best leads at the top.</div>
+      </div>
+      <div class="familiar-card fade-in">
+        <div class="familiar-category">⚙️ Operations</div>
+        <p class="familiar-complaint">"Every Monday feels like starting from scratch. Nobody knows what the priorities are until I tell them."</p>
+        <div class="familiar-solution">→ Automated weekly briefings delivered to your team every Monday morning — priorities, metrics, and focus. All in one place.</div>
+      </div>
+      <div class="familiar-card fade-in delay-1">
+        <div class="familiar-category">📋 Contracts</div>
+        <p class="familiar-complaint">"We're still emailing PDFs back and forth to get signatures. Half the time we start work before the contract is even signed."</p>
+        <div class="familiar-solution">→ DocuSign-integrated contract workflows that send, track, and confirm signatures automatically before any work begins.</div>
+      </div>
+      <div class="familiar-card fade-in delay-2">
+        <div class="familiar-category">📣 Marketing</div>
+        <p class="familiar-complaint">"We know we need to post and send emails but nobody has time and we never have anything ready."</p>
+        <div class="familiar-solution">→ Content strategy and campaign workflows connected to Canva and Gmail — so your brand shows up consistently without the scramble.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo fade-in">
+        <img src="Portrait.jpg" alt="Jesse Lopez — Founder, Jesse Lopez Consulting">
+        <div class="about-photo-caption">
+          <h4>Jesse Lopez</h4>
+          <p>Founder · Business Systems Analyst · Bilingual EN/ES</p>
+        </div>
+      </div>
+      <div class="about-text fade-in delay-1">
+        <span class="label">About Jesse Lopez Consulting</span>
+        <h2>Built by someone who's been inside the problem.</h2>
+        <p>With over 20 years in enterprise automation and healthcare IT, Jesse has designed systems for organizations ranging from regional healthcare networks to municipal governments — delivering over $12M in operational value along the way.</p>
+        <p>Jesse Lopez Consulting was built on a simple belief: technology should serve people — not the other way around. Every engagement starts with your team, your goals, and your pain points. Not the tools.</p>
+        <p>We build it. We document it. We train your people to run it. And we don't disappear after delivery.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-num">20+</div>
+            <div class="about-stat-label">Years Experience</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">$12M+</div>
+            <div class="about-stat-label">Operational Value Delivered</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">80%</div>
+            <div class="about-stat-label">Avg. Process Time Reduction</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">EN/ES</div>
+            <div class="about-stat-label">Bilingual Service</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- COMMUNITY -->
 <section class="community" id="community">
   <div class="container">
     <div class="community-inner">
       <div class="community-text fade-in">
         <span class="label" style="color:var(--teal-dark)">Community mission</span>
-        <h4 style="color: var(--teal-dark); font-family: 'Manrope', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">AI, Demystified. Growth, Multiplied.</h4>
+        <div class="community-slogan">AI, Demystified. Growth, Multiplied.</div>
         <h2>Technology should empower families — not intimidate them.</h2>
-        <p>Jesse Lopez Consulting is building an AI literacy program for children and parents in Southern California — starting at local libraries. Because the next generation deserves access to tools that will shape their future. And it starts with the people closest to them understanding those tools first.</p>
+        <p>Jesse Lopez Consulting is building an AI literacy program for children and parents in Southern California — starting at local libraries. Because the next generation deserves access to tools that will shape their future.</p>
+        <p>It starts with the people closest to them understanding those tools first.</p>
       </div>
-      <div class="community-visual fade-in delay-1">
-        <h3>AI Literacy Program</h3>
-        <p>Southern California · Library System · Children &amp; Parents · EN/ES</p>
+      <div class="community-image fade-in delay-1">
+        <img src="Lecture5.jpg" alt="Jesse Lopez presenting on modernizing workflows">
       </div>
     </div>
   </div>
@@ -384,47 +448,77 @@
     <span class="label fade-in">Let's get to work</span>
     <h2 class="fade-in delay-1">Ready to stop fighting your own systems?</h2>
     <p class="fade-in delay-2">Whether you need one workflow automated or an entire operation simplified — the first step is a 30-minute conversation. No commitment. No pitch deck. Just clarity.</p>
-    <a href="mailto:jesse@jesselopezconsulting.com" class="btn btn-primary fade-in delay-3">Schedule a Free Consultation</a>
+    <a href="audit.html" class="btn btn-primary fade-in delay-3">Schedule a Free Consultation</a>
+  </div>
+</section>
+
+<!-- RECOMMENDATIONS -->
+<section class="recommendations" id="recommendations">
+  <div class="container">
+    <div class="rec-header">
+      <span class="label">Recommendations</span>
+      <h2>What our clients say.</h2>
+      <p>Real results. Real people. No fluff.</p>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-card fade-in">
+        <p class="rec-quote">"One project streamlined an archaic refund process by introducing automation — reducing handling and approval time by 80%. Due to its success, the tool expanded across multiple lanes of the organization."</p>
+        <div class="rec-author">Amy Milunas</div>
+        <div class="rec-role">SVP, Internal Performance · Sonrava Healthcare</div>
+      </div>
+      <div class="rec-card fade-in delay-1">
+        <p class="rec-quote">"Delivered ahead of schedule — considered user needs AND management priorities."</p>
+        <div class="rec-author">Joan Toves</div>
+        <div class="rec-role">Accounting Director · Sonrava Health</div>
+      </div>
+      <div class="rec-card fade-in delay-2">
+        <p class="rec-quote">"He didn't just solve the problem — he made sure we understood it too."</p>
+        <div class="rec-author">Eva Medina</div>
+        <div class="rec-role">Business Analyst</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-top">
+    <div class="footer-inner">
       <div>
-        <div class="footer-brand">
-          <img src="Mark Only.svg" alt="Jesse Lopez Consulting Mark" class="footer-logo-img">
+        <div class="footer-brand-wrap">
+          <img src="Mark Only.svg" alt="Jesse Lopez Consulting" class="footer-logo">
           <div>
             <div class="footer-brand-name">Jesse Lopez</div>
-            <div class="footer-brand-consulting">Consulting</div>
+            <div class="footer-brand-sub">Consulting</div>
           </div>
         </div>
         <p class="footer-tagline">Your people. Better process. Best product.</p>
-        <p class="footer-contact">714-388-6080 · jesselopezconsulting.com</p>
+        <p class="footer-contact">
+          714-388-6080<br>
+          info@jesselopezconsulting.com<br>
+          jesselopezconsulting.com
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#recommendations">Recommendations</a>
+        <a href="#cta">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <a href="https://linkedin.com/in/jesse-lopez-automation">LinkedIn</a>
+        <a href="mailto:info@jesselopezconsulting.com">Email Us</a>
+        <a href="audit.html">Book an Audit</a>
+        <a href="#cta">English / Español</a>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
-        <a href="#services">Automation Audit</a>
-        <a href="#services">Quick Win Flow</a>
+        <a href="#services">Audit Map</a>
+        <a href="#services">Quick Wins</a>
         <a href="#services">Department Sprint</a>
-        <a href="#services">Full Office</a>
-        <a href="#services">Care Plan</a>
-        <a href="#services">Website Builds</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#solution">How We Work</a>
-        <a href="#differentiator">About Jesse</a>
-        <a href="#community">Community</a>
-        <a href="https://linkedin.com/in/jesse-lopez-automation">LinkedIn</a>
-        <a href="https://lopezimagery.com">Photography</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="#cta">Book an Audit</a>
-        <a href="mailto:jesse@jesselopezconsulting.com">Email Jesse</a>
-        <a href="#cta">English / Español</a>
+        <a href="#services">AI Integration</a>
       </div>
     </div>
     <div class="footer-bottom">
