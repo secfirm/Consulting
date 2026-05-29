@@ -16,6 +16,7 @@
 <meta property="og:image" content="https://jesselopezconsulting.com/Primary_lockup_blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <style>
   :root { --navy:#0B1929; --navy-mid:#0f2238; --teal-dark:#0F9D8A; --teal:#2DD4BF; --off-white:#F4F7FA; --slate:#8BA7BF; --white:#FFFFFF; --card-bg:#112237; }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -183,6 +184,7 @@
         </div>
 
         <div class="submit-wrap">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADYhkB1QIaCi9_8-" data-theme="dark" style="margin-bottom:20px;display:flex;justify-content:center;"></div>
           <button type="submit" class="btn-submit" id="submitBtn">Submit My Audit Request</button>
           <p class="form-note">We'll respond within 1 business day · info@jesselopezconsulting.com</p>
         </div>
@@ -211,13 +213,20 @@
   document.getElementById('auditForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const form    = e.target;
-    const btn     = document.getElementById('submitBtn');
+    const form      = e.target;
+    const btn       = document.getElementById('submitBtn');
     const firstName = form.first_name.value.trim();
 
     // Basic HTML5 validity check
     if (!form.checkValidity()) {
       form.reportValidity();
+      return;
+    }
+
+    // Require Turnstile token
+    const token = form.querySelector('[name="cf-turnstile-response"]');
+    if (!token || !token.value) {
+      alert('Please complete the security check.');
       return;
     }
 
@@ -236,6 +245,8 @@
       if (res.ok) {
         // Clear the form
         form.reset();
+        // Reset Turnstile widget
+        if (window.turnstile) turnstile.reset();
 
         // Populate first name in thank-you card
         document.getElementById('ty-name').textContent = firstName || 'friend';
@@ -252,14 +263,17 @@
         alert('Error: ' + msg);
         btn.disabled    = false;
         btn.textContent = 'Submit My Audit Request';
+        if (window.turnstile) turnstile.reset();
       }
     } catch (err) {
       alert('Network error. Please check your connection and try again.');
       btn.disabled    = false;
       btn.textContent = 'Submit My Audit Request';
+      if (window.turnstile) turnstile.reset();
     }
   });
 </script>
 
 </body>
 </html>
+
