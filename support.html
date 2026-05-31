@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Support | Jesse Lopez Consulting</title>
+<meta name="description" content="Submit a support request to Jesse Lopez Consulting. Enter your Account ID and select your issue type to get started.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="Mark%20Only.svg">
+<link rel="icon" type="image/png" href="FavIconBlue.png">
+<link rel="apple-touch-icon" href="FavIconBlue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1929;
+    --navy-mid: #0f2238;
+    --teal-dark: #0F9D8A;
+    --teal: #2DD4BF;
+    --off-white: #F4F7FA;
+    --slate: #8BA7BF;
+    --white: #FFFFFF;
+    --card-bg: #112237;
+    --error: #f87171;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--off-white); font-size: 16px; line-height: 1.65; min-height: 100vh; }
+  h1,h2,h3,h4 { font-family: 'Manrope', sans-serif; font-weight: 600; letter-spacing: -0.01em; }
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .label { font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); }
+  .btn { display: inline-block; padding: 14px 28px; border-radius: 6px; font-family: 'Manrope', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.04em; cursor: pointer; text-decoration: none; transition: all 0.2s; border: none; }
+  .btn-primary { background: var(--teal); color: var(--navy); }
+  .btn-primary:hover:not(:disabled) { background: #25bfac; transform: translateY(-1px); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(11,25,41,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(45,212,191,0.1); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .logo-img { width: 36px; height: 36px; object-fit: contain; }
+  .nav-brand-text { display: flex; flex-direction: column; }
+  .nav-brand-name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; color: var(--off-white); line-height: 1.1; }
+  .nav-brand-sub { font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { font-family: 'Manrope', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-cta { margin-left: 12px; padding: 9px 20px; font-size: 13px; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--off-white); border-radius: 2px; transition: all 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* PAGE HEADER */
+  .page-header { background: var(--navy-mid); padding: 72px 0 56px; border-bottom: 1px solid rgba(45,212,191,0.1); position: relative; overflow: hidden; }
+  .page-header-glow { position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(45,212,191,0.06) 0%, transparent 70%); pointer-events: none; }
+  .page-header-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(45,212,191,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,191,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+  .page-header-content { position: relative; z-index: 2; }
+  .page-header .label { margin-bottom: 12px; display: block; }
+  .page-header h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: var(--white); margin-bottom: 12px; }
+  .page-header p { color: var(--slate); font-size: 1rem; max-width: 520px; }
+
+  /* SUPPORT FORM SECTION */
+  .support-section { padding: 80px 0; }
+  .support-layout { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: start; }
+
+  /* FORM CARD */
+  .form-card { background: var(--card-bg); border: 1px solid rgba(45,212,191,0.12); border-radius: 12px; padding: 48px 40px; }
+  .form-card h2 { font-size: 1.3rem; color: var(--white); margin-bottom: 8px; }
+  .form-card > p { color: var(--slate); font-size: 0.9rem; margin-bottom: 36px; }
+
+  .form-group { margin-bottom: 28px; }
+  .form-group label { display: block; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+  .form-group label span.required { color: var(--error); margin-left: 3px; }
+
+  .input-wrap { position: relative; display: flex; align-items: center; }
+  .input-wrap input, .input-wrap select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(139,167,191,0.2);
+    border-radius: 6px;
+    padding: 13px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+  }
+  .input-wrap input:focus, .input-wrap select:focus {
+    border-color: var(--teal);
+    background: rgba(45,212,191,0.04);
+  }
+  .input-wrap input.error, .input-wrap select.error {
+    border-color: var(--error);
+    background: rgba(248,113,113,0.04);
+  }
+  .input-wrap input::placeholder { color: #3a5570; }
+  .input-wrap select option { background: var(--card-bg); color: var(--off-white); }
+  /* Select arrow */
+  .select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 14px;
+    color: var(--slate);
+    font-size: 12px;
+    pointer-events: none;
+  }
+
+  /* Clear button inside Account ID field */
+  .clear-btn {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    color: var(--slate);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 6px;
+    line-height: 1;
+    transition: color 0.2s;
+    display: none;
+  }
+  .clear-btn:hover { color: var(--teal); }
+  .clear-btn.visible { display: block; }
+  /* Pad input right when clear btn visible */
+  #accountId { padding-right: 40px; }
+
+  .field-error {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--error);
+    margin-top: 6px;
+    display: none;
+    letter-spacing: 0.02em;
+  }
+  .field-error.visible { display: block; }
+
+  /* Character counter */
+  .char-counter { font-size: 11px; color: var(--slate); text-align: right; margin-top: 4px; }
+  .char-counter.complete { color: var(--teal); }
+
+  /* Submit row */
+  .submit-row { margin-top: 36px; }
+  .submit-btn { width: 100%; padding: 16px; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Disclaimer */
+  .form-disclaimer { font-size: 11px; color: #3a5570; text-align: center; margin-top: 16px; line-height: 1.6; }
+
+  /* SIDEBAR INFO */
+  .support-sidebar { display: flex; flex-direction: column; gap: 20px; }
+  .info-card { background: var(--card-bg); border: 1px solid rgba(45,212,191,0.1); border-radius: 10px; padding: 28px 24px; }
+  .info-card-icon { font-size: 1.4rem; margin-bottom: 12px; }
+  .info-card h4 { font-family: 'Manrope', sans-serif; font-size: 0.95rem; color: var(--off-white); margin-bottom: 8px; }
+  .info-card p { font-size: 0.82rem; color: var(--slate); line-height: 1.65; }
+  .info-card a { color: var(--teal); text-decoration: none; }
+  .info-card a:hover { text-decoration: underline; }
+  .placeholder-badge { display: inline-block; font-family: 'Manrope', sans-serif; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); background: var(--teal); border-radius: 4px; padding: 3px 8px; margin-bottom: 12px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; flex-direction: column; gap: 0; position: absolute; top: 68px; left: 0; right: 0; background: rgba(11,25,41,0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(45,212,191,0.15); padding: 16px 24px 24px; z-index: 999; }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 15px; padding: 14px 0; border-bottom: 1px solid rgba(139,167,191,0.1); width: 100%; }
+    .nav-links a.nav-cta { margin-top: 16px; text-align: center; border-bottom: none; }
+    .support-layout { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+    .support-sidebar { order: -1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-brand">
+      <img src="Mark Only.svg" alt="Jesse Lopez Consulting" class="logo-img">
+      <div class="nav-brand-text">
+        <span class="nav-brand-name">Jesse Lopez</span>
+        <span class="nav-brand-sub">Consulting</span>
+      </div>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#familiar">The Problem</a>
+      <a href="index.html#services">Services</a>
+      <a href="support.html" class="active">Support</a>
+      <a href="index.html#about">About</a>
+      <a href="audit.html" class="btn btn-primary nav-cta" style="color:var(--navy);">BOOK A FREE AUDIT</a>
+    </div>
+  </div>
+</nav>
+
+<section class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="container page-header-content">
+    <span class="label">Client Support</span>
+    <h1>How can we help you?</h1>
+    <p>Submit your request below. Enter your Account ID and select the type of support you need.</p>
+  </div>
+</section>
+
+<section class="support-section">
+  <div class="container">
+    <div class="support-layout">
+
+      <!-- FORM CARD -->
+      <div class="form-card">
+        <div class="placeholder-badge">Placeholder — Coming Soon</div>
+        <h2>Submit a Support Request</h2>
+        <p>All fields are required. Your Account ID must be 16 digits.</p>
+
+        <form id="supportForm" novalidate action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+          <!-- Account ID -->
+          <div class="form-group" id="group-accountId">
+            <label for="accountId">Account ID <span class="required">*</span></label>
+            <div class="input-wrap">
+              <input
+                type="text"
+                id="accountId"
+                name="accountId"
+                inputmode="numeric"
+                maxlength="16"
+                placeholder="Enter your 16-digit Account ID"
+                autocomplete="off"
+              >
+              <button type="button" class="clear-btn" id="clearBtn" aria-label="Clear Account ID" title="Clear">✕</button>
+            </div>
+            <div class="char-counter" id="charCounter">0 / 16 digits</div>
+            <div class="field-error" id="error-accountId">Account not found. Please check your account number again.</div>
+          </div>
+
+          <!-- Support Type -->
+          <div class="form-group" id="group-supportType">
+            <label for="supportType">Support Type <span class="required">*</span></label>
+            <div class="input-wrap select-wrap">
+              <select id="supportType" name="supportType">
+                <option value="" disabled selected>Select a support type</option>
+                <option value="Billing Questions">Billing Questions</option>
+                <option value="Subscription Changes">Subscription Changes</option>
+                <option value="Support Ticket">Support Ticket</option>
+              </select>
+            </div>
+            <div class="field-error" id="error-supportType">Please select a support type.</div>
+          </div>
+
+          <!-- Submit -->
+          <div class="submit-row">
+            <button type="submit" class="btn btn-primary submit-btn" id="submitBtn" disabled>Submit Request</button>
+          </div>
+          <p class="form-disclaimer">This form is for demonstration purposes. Full support functionality coming soon.</p>
+
+        </form>
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="support-sidebar">
+        <div class="info-card">
+          <div class="info-card-icon">📋</div>
+          <h4>Billing Questions</h4>
+          <p>Have questions about your invoice, payment method, or charges? Select "Billing Questions" from the dropdown.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🔄</div>
+          <h4>Subscription Changes</h4>
+          <p>Need to upgrade, downgrade, or cancel your plan? Select "Subscription Changes" and we'll take care of it.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🎫</div>
+          <h4>Support Ticket</h4>
+          <p>Experiencing a technical issue or need general help? Submit a support ticket and our team will follow up.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📬</div>
+          <h4>Prefer Email?</h4>
+          <p>Reach us directly at <a href="mailto:info@jesselopezconsulting.com">info@jesselopezconsulting.com</a> or call <a href="tel:7143886080">714-388-6080</a>.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer style="background:#060f1a; padding:40px 0; border-top:1px solid rgba(255,255,255,0.06);">
+  <div class="container">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <div style="color:#3a5570; font-size:12px;">© 2026 Jesse Lopez Consulting · All rights reserved</div>
+      <div style="display:flex; gap:20px;">
+        <a href="index.html" style="color:#3a5570; font-size:12px; text-decoration:none; font-family:'Manrope',sans-serif; letter-spacing:0.08em; text-transform:uppercase;">Home</a>
+        <a href="index.html#services" style="color:#3a5570; font-size:12px; text-decoration:none; font-family:'Manrope',sans-serif; letter-spacing:0.08em; text-transform:uppercase;">Services</a>
+        <a href="audit.html" style="color:#3a5570; font-size:12px; text-decoration:none; font-family:'Manrope',sans-serif; letter-spacing:0.08em; text-transform:uppercase;">Book Audit</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // NAV HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // FORM LOGIC
+  const accountIdInput = document.getElementById('accountId');
+  const supportTypeSelect = document.getElementById('supportType');
+  const submitBtn = document.getElementById('submitBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const charCounter = document.getElementById('charCounter');
+  const errorAccountId = document.getElementById('error-accountId');
+  const errorSupportType = document.getElementById('error-supportType');
+
+  function updateSubmitState() {
+    const idValid = accountIdInput.value.length === 16 && /^\d{16}$/.test(accountIdInput.value);
+    const typeValid = supportTypeSelect.value !== '';
+    submitBtn.disabled = !(idValid && typeValid);
+  }
+
+  // Account ID input — numeric only, max 16
+  accountIdInput.addEventListener('input', () => {
+    // Strip non-numeric
+    accountIdInput.value = accountIdInput.value.replace(/\D/g, '').slice(0, 16);
+    const len = accountIdInput.value.length;
+    charCounter.textContent = `${len} / 16 digits`;
+    charCounter.className = 'char-counter' + (len === 16 ? ' complete' : '');
+    // Show/hide clear button
+    clearBtn.className = 'clear-btn' + (len > 0 ? ' visible' : '');
+    // Clear error state while typing
+    accountIdInput.classList.remove('error');
+    errorAccountId.classList.remove('visible');
+    updateSubmitState();
+  });
+
+  // Clear button
+  clearBtn.addEventListener('click', () => {
+    accountIdInput.value = '';
+    charCounter.textContent = '0 / 16 digits';
+    charCounter.className = 'char-counter';
+    clearBtn.className = 'clear-btn';
+    accountIdInput.classList.remove('error');
+    errorAccountId.classList.remove('visible');
+    accountIdInput.focus();
+    updateSubmitState();
+  });
+
+  // Support type change
+  supportTypeSelect.addEventListener('change', () => {
+    supportTypeSelect.classList.remove('error');
+    errorSupportType.classList.remove('visible');
+    updateSubmitState();
+  });
+
+  // Form submit — mock validation, always fails on account ID
+  document.getElementById('supportForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    let hasError = false;
+
+    // Validate support type
+    if (!supportTypeSelect.value) {
+      supportTypeSelect.classList.add('error');
+      errorSupportType.classList.add('visible');
+      hasError = true;
+    }
+
+    // Validate account ID (always fails — mock)
+    if (accountIdInput.value.length !== 16 || !/^\d{16}$/.test(accountIdInput.value)) {
+      accountIdInput.classList.add('error');
+      errorAccountId.classList.add('visible');
+      if (!hasError) accountIdInput.focus();
+      hasError = true;
+    } else {
+      // 16 digits entered — still fails (mock behavior)
+      accountIdInput.classList.add('error');
+      errorAccountId.classList.add('visible');
+      if (!hasError) accountIdInput.focus();
+      hasError = true;
+    }
+  });
+</script>
+<script src="//code.tidio.co/7rktwxv7dprxbec1shmwuonaazbkdwbw.js" async></script>
+</body>
+</html>
