@@ -1,0 +1,143 @@
+/* ============================================================
+   Jesse Lopez Consulting — Color & Type Foundations
+   Import this file to inherit the brand's design tokens.
+   Fonts are loaded from Google Fonts (Manrope + Inter).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---- BRAND CORE ---------------------------------------- */
+  --navy:        #0D1B2A;  /* primary brand navy (logo "Jesse Lopez") */
+  --teal:        #14B8A6;  /* primary brand teal (logo "L" + underline) */
+  --paper:       #F2F4F7;  /* brand light neutral */
+
+  /* ---- NAVY SCALE (surfaces, depth) ---------------------- */
+  --navy-900:    #050B14;  /* deepest — page base on dark sections */
+  --navy-800:    #0A1320;  /* footer / deep panels */
+  --navy-700:    #0D1B2A;  /* brand navy — default dark surface */
+  --navy-600:    #11253A;  /* raised dark card */
+  --navy-500:    #18324C;  /* hairline borders on dark */
+
+  /* ---- TEAL SCALE (accent, states) ---------------------- */
+  --teal-700:    #0E8C7E;  /* pressed / deep accent */
+  --teal-600:    #119A8A;  /* hover accent */
+  --teal-500:    #14B8A6;  /* brand teal — default accent */
+  --teal-400:    #2DD4BF;  /* bright teal — glows, gradients */
+  --teal-glow:   rgba(20, 184, 166, 0.28);
+
+  /* ---- NEUTRALS (light surfaces) ------------------------ */
+  --white:       #FFFFFF;
+  --paper-50:    #F8FAFC;  /* light card fill */
+  --paper-100:   #F2F4F7;  /* section background */
+  --paper-200:   #E4E9F0;  /* light borders */
+  --ink-900:     #0D1B2A;  /* body text on light */
+  --ink-600:     #475569;  /* secondary text on light */
+  --ink-400:     #64748B;  /* muted text on light */
+
+  /* ---- TEXT ON DARK ------------------------------------- */
+  --fg-1:        #F4F7FA;  /* primary text on navy */
+  --fg-2:        #9DB2C7;  /* secondary / slate text on navy */
+  --fg-3:        #5E7791;  /* tertiary / footer text on navy */
+  --slate:       #8BA7BF;  /* brand slate — muted text on navy */
+
+  /* ---- SEMANTIC SURFACES -------------------------------- */
+  --card-dark:        rgba(17, 37, 58, 0.55);
+  --card-dark-border: rgba(20, 184, 166, 0.14);
+  --glass:            rgba(13, 27, 42, 0.72);
+
+  /* ---- TYPEFACES ---------------------------------------- */
+  --font-display: 'Manrope', system-ui, sans-serif;  /* headings, labels, numbers */
+  --font-body:    'Inter', system-ui, sans-serif;     /* paragraphs, UI copy */
+
+  /* ---- RADII -------------------------------------------- */
+  --r-sm:  8px;
+  --r-md:  12px;
+  --r-lg:  16px;
+  --r-xl:  22px;
+  --r-pill: 999px;
+
+  /* ---- ELEVATION ---------------------------------------- */
+  --shadow-sm:   0 4px 14px rgba(5, 11, 20, 0.06);
+  --shadow-md:   0 12px 30px rgba(5, 11, 20, 0.10);
+  --shadow-lg:   0 24px 60px rgba(5, 11, 20, 0.18);
+  --shadow-teal: 0 10px 30px rgba(20, 184, 166, 0.28);
+
+  /* ---- MOTION ------------------------------------------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur:      0.4s;
+}
+
+/* ============================================================
+   BASE TYPE STYLES  (semantic, ready to use)
+   ============================================================ */
+
+.t-eyebrow {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal-500);
+}
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.3;
+}
+
+.t-stat {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.t-small {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.t-mono-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
