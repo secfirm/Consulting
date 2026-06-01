@@ -114,7 +114,6 @@ function Hero() {
         <div className="hero-content">
           <Reveal className="" delay="">
             <span className="eyebrow on-dark">{t("hero.eyebrow")}</span>
-            <span className="hero-specialist">{t("hero.specialist")}</span>
           </Reveal>
           <Reveal as="h1" delay="d1">
             <Magnetic strength={10}>{t("hero.title1")}</Magnetic><br />
