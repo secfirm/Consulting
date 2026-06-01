@@ -368,7 +368,7 @@ section { position: relative; }
    ============================================================ */
 .comm { position: relative; overflow: hidden; background: var(--navy-900); padding: 124px 0; }
 .comm-img {
-  position: absolute; inset: 0; background-image: url("../../assets/community-hero.png");
+  position: absolute; inset: 0; background-image: url("/Community.jpg");
   background-size: cover; background-position: 55% center;
   animation: kenburns 22s ease-in-out infinite alternate;
   filter: saturate(.85);
