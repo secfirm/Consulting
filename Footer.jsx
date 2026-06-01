@@ -38,7 +38,7 @@ function Footer() {
         <div className="footer-top">
           <div>
             <a href="#top" className="brand-lockup sm" style={{ marginBottom: 18 }}>
-              <img className="bmark" src="../../assets/mark-light.png" alt="" />
+              <img className="bmark" src="/Wordmark_Only.svg" alt="" />
               <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
             </a>
             <p className="footer-tag">{t("foot.tag")}</p>
