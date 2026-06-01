@@ -2,9 +2,8 @@
    Extras.jsx — Community Mission · Contact · Chat Widget
    ============================================================ */
 
-const CAL_URL  = "/audit.html";
-const MAIL_TO  = "mailto:info@jesselopezconsulting.com";
-const MAIL_JESSE = "mailto:jesse@jesselopezconsulting.com";
+const CAL_URL  = "https://calendly.com/jesselopezconsulting";
+const MAIL_TO  = "mailto:jesse@jesselopezconsulting.com";
 const PHONE_TO = "tel:+17143886080";
 const LINKEDIN = "https://linkedin.com/in/jesse-lopez-automation";
 
@@ -37,7 +36,7 @@ function Community() {
             <div className="cq-mark"><Icon name="quote" /></div>
             <blockquote>{t("comm.quote")}</blockquote>
             <div className="cq-by">
-              <img src="/Community.jpg" alt="Jesse and his son Nican" />
+              <img src="../../assets/jesse-son.png" alt="Jesse and his son Nican" />
               <div>
                 <div className="cq-name">— {t("comm.who")}</div>
                 <div className="cq-role">{t("comm.role")}</div>
@@ -119,7 +118,7 @@ function ChatWidget() {
       <div className={`chat-panel ${open ? "open" : ""}`} role="dialog" aria-label={t("chat.title")}>
         <div className="cp-head">
           <div className="cp-av">
-            <img src="/Portrait.jpg" alt="Jesse" />
+            <img src="../../assets/portrait-circle.png" alt="Jesse" />
             <span className="cp-on" />
           </div>
           <div className="cp-meta">
