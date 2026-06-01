@@ -17,7 +17,7 @@ function Nav() {
     <nav className="nav">
       <div className="container nav-inner">
         <a href="#top" className="brand-lockup" onClick={close}>
-          <img className="bmark" src="/Wordmark_Only.svg" alt="" />
+          <img className="bmark" src="../../assets/mark-light.png" alt="" />
           <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
         </a>
         <div className="nav-right">
@@ -29,7 +29,10 @@ function Nav() {
           <div className="nav-links">
             {links.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
           </div>
-          <a href="/audit.html" className="btn btn-primary nav-cta">
+          <a className="nav-linkedin" href={window.JLC_LINKS.LINKEDIN} target="_blank" rel="noopener" aria-label="LinkedIn">
+            <Icon name="linkedin" />
+          </a>
+          <a href={window.JLC_LINKS.CAL_URL} target="_blank" rel="noopener" className="btn btn-primary nav-cta">
             <span className="nav-cta-text">{t("nav.cta")}</span>
             <Icon name="calendar-check" />
           </a>
@@ -42,6 +45,7 @@ function Nav() {
         {links.map(([href, label]) => (
           <a key={href} href={href} onClick={close}>{label}</a>
         ))}
+        <a href={window.JLC_LINKS.LINKEDIN} target="_blank" rel="noopener" onClick={close}>LinkedIn</a>
       </div>
     </nav>
   );
