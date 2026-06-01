@@ -17,7 +17,7 @@ function Nav() {
     <nav className="nav">
       <div className="container nav-inner">
         <a href="#top" className="brand-lockup" onClick={close}>
-          <img className="bmark" src="../../assets/mark-light.png" alt="" />
+          <img className="bmark" src="/Wordmark_Only.svg" alt="" />
           <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
         </a>
         <div className="nav-right">
