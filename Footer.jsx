@@ -14,7 +14,7 @@ function CTA() {
           <h2>{t("cta.title")}</h2>
           <p>{t("cta.body")}</p>
           <div className="cta-actions">
-            <a href="/audit.html" className="btn btn-primary btn-pulse">
+            <a href={window.JLC_LINKS.CAL_URL} target="_blank" rel="noopener" className="btn btn-primary btn-pulse">
               {t("cta.b1")}<Icon name="arrow-right" />
             </a>
             <a href={window.JLC_LINKS.PHONE_TO} className="btn btn-ghost"><Icon name="phone" />{t("cta.b2")}</a>
@@ -38,7 +38,7 @@ function Footer() {
         <div className="footer-top">
           <div>
             <a href="#top" className="brand-lockup sm" style={{ marginBottom: 18 }}>
-              <img className="bmark" src="/Wordmark_Only.svg" alt="" />
+              <img className="bmark" src="../../assets/mark-light.png" alt="" />
               <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
             </a>
             <p className="footer-tag">{t("foot.tag")}</p>
