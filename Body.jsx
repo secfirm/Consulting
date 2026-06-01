@@ -178,7 +178,7 @@ function Founder() {
       <div className="container founder-inner">
         <Reveal className="founder-photo">
           <div className="frame" ref={frameRef} style={{ height: 460 }}>
-            <img src="../../assets/portrait.jpg" alt="Jesse Lopez" />
+            <img src="/Portrait.jpg" alt="Jesse Lopez" />
           </div>
           <div className="founder-badge">
             <div className="n">{t("founder.badgeN")}</div>
