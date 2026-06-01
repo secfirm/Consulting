@@ -20,7 +20,7 @@ function TiltFlip({ children }) {
 }
 window.TiltFlip = TiltFlip;
 
-/* ---------------- PROOF (hidden per owner — kept for future use) ---------------- */
+/* ---------------- PROOF ---------------- */
 function Proof() {
   const { t } = useT();
   const tools = ["Power Platform", "Bizagi", "SQL Server", "Power Automate", "SharePoint", "Zapier"];
@@ -178,7 +178,7 @@ function Founder() {
       <div className="container founder-inner">
         <Reveal className="founder-photo">
           <div className="frame" ref={frameRef} style={{ height: 460 }}>
-            <img src="/Portrait.jpg" alt="Jesse Lopez" />
+            <img src="../../assets/portrait.jpg" alt="Jesse Lopez" />
           </div>
           <div className="founder-badge">
             <div className="n">{t("founder.badgeN")}</div>
@@ -203,46 +203,3 @@ function Founder() {
   );
 }
 window.Founder = Founder;
-
-/* ---------------- APPOINTMENT LIFECYCLE TIMELINE ---------------- */
-function Lifecycle() {
-  const { t } = useT();
-  const stages = [
-    { ico: "user-plus",       en: "Referral",     es: "Referido",        pain: "Lost in intake queues" },
-    { ico: "shield-check",    en: "Prior Auth",   es: "Autorización",    pain: "Avg 11-day delay" },
-    { ico: "calendar",        en: "Scheduling",   es: "Agenda",          pain: "Phone tag & no-shows" },
-    { ico: "clipboard-check", en: "Check-in",     es: "Registro",        pain: "Paper forms & wait times" },
-    { ico: "stethoscope",     en: "Visit",        es: "Consulta",        pain: "Under-documented encounters" },
-    { ico: "file-text",       en: "Coding",       es: "Codificación",    pain: "Denials from upcoding" },
-    { ico: "credit-card",     en: "Billing",      es: "Facturación",     pain: "Manual claim submissions" },
-    { ico: "refresh-cw",      en: "Collections",  es: "Cobranza",        pain: "No follow-up automation" },
-  ];
-  const lang = useT().lang;
-  return (
-    <section className="s-darker s-pad lifecycle" id="lifecycle">
-      <div className="container">
-        <Head
-          eyebrow="End-to-End Ownership"
-          title="Most consultants fix one step. I fix the whole chain."
-          center dark
-        />
-        <div className="lc-track">
-          {stages.map((s, i) => (
-            <Reveal key={s.en} delay={`d${(i % 4) + 1}`} className="lc-stage">
-              <div className="lc-ico"><Icon name={s.ico} /></div>
-              <div className="lc-label">{lang === "es" ? s.es : s.en}</div>
-              <div className="lc-pain">{s.pain}</div>
-              {i < stages.length - 1 && <div className="lc-arrow"><Icon name="arrow-right" /></div>}
-            </Reveal>
-          ))}
-        </div>
-        <Reveal className="lc-cta">
-          <p>"Every broken handoff costs you time, revenue, and patients.<br />
-          I map the gaps and automate the fix."</p>
-          <a href="/audit.html" className="btn btn-primary">Map My Lifecycle Gaps <Icon name="arrow-right" /></a>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-window.Lifecycle = Lifecycle;
