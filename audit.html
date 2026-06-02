@@ -33,7 +33,37 @@
   .nav-back{font-family:'Manrope',sans-serif;font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s;}
   .nav-back:hover{color:var(--teal);}
   .audit-hero{background:var(--navy);padding:80px 0 60px;text-align:center;position:relative;overflow:hidden;}
-  .audit-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(45,212,191,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,212,191,0.04) 1px,transparent 1px);background-size:60px 60px;}
+  .audit-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .audit-hero-breathe {
+    position: absolute; inset: -10%;
+    background:
+      radial-gradient(900px circle at 50% 50%, rgba(15,138,126,.22), transparent 60%),
+      linear-gradient(135deg, #050B14, #0A2540 45%, #0E3B40 70%, #050B14);
+    filter: blur(40px);
+    animation: auditBreathe 9s ease-in-out infinite alternate;
+    opacity: .9;
+  }
+  @keyframes auditBreathe {
+    0%   { transform: scale(1)    translate(0, 0);    filter: blur(38px) hue-rotate(0deg); }
+    50%  { transform: scale(1.06) translate(-1.2%, .8%); filter: blur(48px) hue-rotate(-6deg); }
+    100% { transform: scale(1.03) translate(1%, -1%);    filter: blur(42px) hue-rotate(4deg); }
+  }
+  .audit-hero-glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(680px circle at 82% 18%, rgba(20,184,166,.16), transparent 60%),
+      radial-gradient(560px circle at 8% 88%, rgba(20,184,166,.08), transparent 60%);
+    animation: auditDrift 16s ease-in-out infinite alternate;
+  }
+  @keyframes auditDrift { 0% { transform: translate3d(0,0,0) scale(1);} 100% { transform: translate3d(-2%,1.5%,0) scale(1.06);} }
+  .audit-hero-grid-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(20,184,166,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 30%, transparent 80%);
+  }
+  .audit-hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .audit-hero .label{font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:16px;}
   .audit-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:16px;position:relative;}
   .audit-hero h1 span{color:var(--teal);}
@@ -89,8 +119,13 @@
 </nav>
 
 <section class="audit-hero">
-  <div class="audit-hero-grid"></div>
-  <div class="container">
+  <div class="audit-hero-bg">
+    <div class="audit-hero-breathe"></div>
+    <div class="audit-hero-glow"></div>
+    <div class="audit-hero-grid-lines"></div>
+    <canvas class="audit-hero-canvas" id="auditCanvas"></canvas>
+  </div>
+  <div class="container" style="position:relative;z-index:2;">
     <span class="label">Free Audit</span>
     <h1>Let's find your <span>biggest bottleneck.</span></h1>
     <p>Fill out the form below and we'll reach out to schedule your free 30-minute audit. No commitment. No pitch deck. Just clarity.</p>
@@ -274,6 +309,79 @@
   });
 </script>
 
+<script>
+(function() {
+  const canvas = document.getElementById('auditCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let raf, w, h, pts = [];
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+  const mouse = { x: -9999, y: -9999, on: false };
+  const REPEL = 130, LINK = 132;
+
+  function resize() {
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * DPR; canvas.height = h * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const count = Math.min(72, Math.floor(w / 20));
+    pts = Array.from({ length: count }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.26, vy: (Math.random() - 0.5) * 0.26,
+      r: Math.random() * 1.7 + 0.7
+    }));
+  }
+
+  function onMove(e) {
+    const r = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = true;
+  }
+  function onLeave() { mouse.on = false; mouse.x = mouse.y = -9999; }
+
+  function frame() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      if (mouse.on) {
+        const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+        if (d < REPEL && d > 0.01) {
+          const f = (1 - d / REPEL) * 0.85;
+          p.vx += (dx / d) * f; p.vy += (dy / d) * f;
+        }
+      }
+      p.x += p.vx; p.y += p.vy;
+      p.vx *= 0.95; p.vy *= 0.95;
+      if (Math.hypot(p.vx, p.vy) < 0.15) { p.vx += (Math.random() - 0.5) * 0.06; p.vy += (Math.random() - 0.5) * 0.06; }
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      p.x = Math.max(0, Math.min(w, p.x)); p.y = Math.max(0, Math.min(h, p.y));
+      const near = mouse.on && Math.hypot(p.x - mouse.x, p.y - mouse.y) < REPEL;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = near ? 'rgba(45,212,191,0.95)' : 'rgba(45,212,191,0.5)'; ctx.fill();
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.hypot(dx, dy);
+        if (d < LINK) {
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(20,184,166,' + (0.18 * (1 - d / LINK)) + ')';
+          ctx.lineWidth = 1; ctx.stroke();
+        }
+      }
+      if (near) {
+        const d2 = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y);
+        ctx.strokeStyle = 'rgba(45,212,191,' + (0.22 * (1 - d2 / REPEL)) + ')';
+        ctx.lineWidth = 1; ctx.stroke();
+      }
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  resize();
+  frame();
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', onMove);
+  window.addEventListener('mouseout', onLeave);
+})();
+</script>
 <script src="//code.tidio.co/7rktwxv7dprxbec1shmwuonaazbkdwbw.js" async></script>
 </body>
 </html>
