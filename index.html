@@ -466,6 +466,19 @@ section { position: relative; }
     linear-gradient(90deg, rgba(5,11,20,.95) 0%, rgba(5,11,20,.85) 38%, rgba(5,11,20,.55) 60%, rgba(5,11,20,.2) 100%),
     linear-gradient(0deg, rgba(5,11,20,.55), rgba(5,11,20,0) 60%);
 }
+
+/* ---- HOW WE WORK background image ---- */
+.work-section-bg {
+  position: absolute; inset: 0; background-image: url("/Lecture5.jpg");
+  background-size: cover; background-position: center 30%;
+  animation: kenburns 26s ease-in-out infinite alternate;
+  filter: saturate(.7);
+}
+.work-section-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(0deg, rgba(5,11,20,.97) 0%, rgba(5,11,20,.82) 40%, rgba(5,11,20,.72) 100%);
+}
 .comm-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
 .comm-h {
   font-family: var(--font-display); font-weight: 800; color: #fff;
@@ -1586,8 +1599,10 @@ function Work() {
     ["03", "work.3t", "work.3d"],
   ];
   return (
-    <section className="s-dark s-pad" id="work">
-      <div className="container">
+    <section className="s-dark s-pad" id="work" style={{ position: "relative", overflow: "hidden" }}>
+      <div className="work-section-bg" />
+      <div className="work-section-overlay" />
+      <div className="container" style={{ position: "relative", zIndex: 2 }}>
         <Head eyebrow={t("work.eyebrow")} title={t("work.title")} sub={t("work.sub")} center dark />
         <div className="work-steps">
           {steps.map(([n, ti, d], i) => (
