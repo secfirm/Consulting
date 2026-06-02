@@ -197,7 +197,7 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    HERO
    ============================================================ */
-.hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; padding: 90px 0 70px; }
+.hero { position: relative; min-height: 92vh; display: flex; align-items: flex-start; overflow: hidden; padding: 100px 0 70px; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero-glow {
@@ -231,7 +231,7 @@ img { display: block; max-width: 100%; }
 .hero-inner { display: grid; grid-template-columns: 1.18fr 1fr; gap: 56px; align-items: center; }
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.1; letter-spacing: -.025em; color: #fff; margin: 22px 0 14px; }
 .hero h1 .grad { background: linear-gradient(120deg, var(--teal-400), var(--teal-600)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.type-line { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--teal-400); min-height: 1.6em; margin-bottom: 24px; letter-spacing: .01em; width: 100%; max-width: 100%; overflow: visible; white-space: nowrap; }
+.type-line { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--teal-400); min-height: 1.6em; margin-bottom: 24px; letter-spacing: .01em; width: 100%; max-width: 100%; overflow: visible; white-space: normal; display: block; }
 .type-cursor { display: inline-block; width: 2px; height: 1.05em; background: var(--teal-400); margin-left: 3px; transform: translateY(3px); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-sub { font-size: 1.12rem; color: var(--fg-2); max-width: 540px; margin-bottom: 34px; }
@@ -604,7 +604,7 @@ section { position: relative; }
 }
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .hero { padding: 70px 0 56px; min-height: unset; }
+  .hero { padding: 60px 0 56px; min-height: unset; align-items: flex-start; }
   .calc { max-width: 520px; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -618,7 +618,7 @@ section { position: relative; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bot { flex-direction: column; gap: 14px; }
   .s-pad { padding: 84px 0; }
-  .type-line { white-space: normal; font-size: clamp(.95rem, 4.5vw, 1.15rem); }
+  .type-line { white-space: normal; font-size: clamp(.95rem, 4.5vw, 1.15rem); display: block; }
 }
 
 /* Appointment Lifecycle Specialist tagline */
