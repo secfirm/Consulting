@@ -161,7 +161,8 @@ img { display: block; max-width: 100%; }
 .brand-lockup .bword i { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: 9.5px; letter-spacing: .34em; text-transform: uppercase; color: var(--teal-400); margin-top: 4px; }
 .brand-lockup.sm .bmark { height: 34px; }
 .brand-lockup.sm .bword b { font-size: 17px; }
-.nav-logo { height: 38px; }
+.nav-logo { height: 38px; width: auto; display: block; }
+.nav-cta { color: var(--navy-900) !important; }
 .nav-right { display: flex; align-items: center; gap: 22px; }
 .nav-linkedin {
   display: inline-flex; align-items: center; justify-content: center;
@@ -230,7 +231,7 @@ img { display: block; max-width: 100%; }
 .hero-inner { display: grid; grid-template-columns: 1.18fr 1fr; gap: 56px; align-items: center; }
 .hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.3rem, 4.6vw, 3.9rem); line-height: 1.1; letter-spacing: -.025em; color: #fff; margin: 22px 0 14px; }
 .hero h1 .grad { background: linear-gradient(120deg, var(--teal-400), var(--teal-600)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-.type-line { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--teal-400); min-height: 1.6em; margin-bottom: 24px; letter-spacing: .01em; overflow: hidden; white-space: nowrap; max-width: 100%; }
+.type-line { font-family: var(--font-display); font-weight: 700; font-size: clamp(1rem, 1.6vw, 1.3rem); color: var(--teal-400); min-height: 1.6em; margin-bottom: 24px; letter-spacing: .01em; width: 100%; max-width: 100%; overflow: visible; white-space: nowrap; }
 .type-cursor { display: inline-block; width: 2px; height: 1.05em; background: var(--teal-400); margin-left: 3px; transform: translateY(3px); animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .hero-sub { font-size: 1.12rem; color: var(--fg-2); max-width: 540px; margin-bottom: 34px; }
@@ -282,56 +283,6 @@ img { display: block; max-width: 100%; }
 .calc-bonus .cb-l { font-size: .76rem; color: var(--fg-2); font-weight: 500; }
 .calc-bonus .cb-v { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; color: var(--teal-400); }
 .calc-foot { margin-top: 14px; font-size: .68rem; color: var(--slate); line-height: 1.5; font-style: italic; }
-
-/* ---- CALC COMING SOON --------------------------------- */
-.calc-disabled {
-  position: relative;
-  pointer-events: none;
-  user-select: none;
-}
-.calc-disabled input,
-.calc-disabled button {
-  opacity: 0.38;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-.calc-cs-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  border-radius: var(--r-lg);
-  background: rgba(5,11,20,0.45);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-}
-.calc-cs-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, rgba(20,184,166,.18), rgba(20,184,166,.08));
-  border: 1px solid rgba(45,212,191,.45);
-  border-radius: var(--r-pill);
-  padding: 10px 22px;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--teal-400);
-  box-shadow: 0 0 28px rgba(20,184,166,.18);
-}
-.calc-cs-sub {
-  font-family: var(--font-display);
-  font-size: 11.5px;
-  color: var(--slate);
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
 
 /* ============================================================
    SECTION SCAFFOLD
@@ -401,7 +352,7 @@ section { position: relative; }
 .work-num { width: 60px; height: 60px; margin: 0 auto 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--teal-400);
   background: var(--navy-700); border: 1.5px solid var(--teal-500); box-shadow: 0 0 0 6px var(--navy-800), 0 8px 22px rgba(20,184,166,.18); }
-.work-step h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: #fff; margin-bottom: 10px; }
+.work-step h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: #ffffff !important; margin-bottom: 10px; display: block; visibility: visible; }
 .work-step p { font-size: .96rem; color: var(--fg-2); max-width: 280px; margin: 0 auto; }
 
 /* ---- STATS (counters) --------------------------------- */
@@ -465,19 +416,6 @@ section { position: relative; }
   background:
     linear-gradient(90deg, rgba(5,11,20,.95) 0%, rgba(5,11,20,.85) 38%, rgba(5,11,20,.55) 60%, rgba(5,11,20,.2) 100%),
     linear-gradient(0deg, rgba(5,11,20,.55), rgba(5,11,20,0) 60%);
-}
-
-/* ---- HOW WE WORK background image ---- */
-.work-section-bg {
-  position: absolute; inset: 0; background-image: url("/Lecture5.jpg");
-  background-size: cover; background-position: center 30%;
-  animation: kenburns 26s ease-in-out infinite alternate;
-  filter: saturate(.7);
-}
-.work-section-overlay {
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(0deg, rgba(5,11,20,.97) 0%, rgba(5,11,20,.82) 40%, rgba(5,11,20,.72) 100%);
 }
 .comm-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
 .comm-h {
@@ -666,7 +604,8 @@ section { position: relative; }
 }
 @media (max-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-  .calc { max-width: 520px; margin: 0 auto; }
+  .hero { padding: 70px 0 56px; min-height: unset; }
+  .calc { max-width: 520px; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .quotes { grid-template-columns: 1fr; }
@@ -679,12 +618,7 @@ section { position: relative; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bot { flex-direction: column; gap: 14px; }
   .s-pad { padding: 84px 0; }
-  .hero { padding: 72px 0 56px; min-height: auto; }
-  .hero-content { text-align: center; }
-  .hero-actions { justify-content: center; }
-  .hero-trust { justify-content: center; flex-wrap: wrap; gap: 12px; }
-  .type-line { white-space: normal; font-size: clamp(.95rem, 4vw, 1.1rem); }
-  .calc { margin-top: 8px; padding: 22px 18px; }
+  .type-line { white-space: normal; font-size: clamp(.95rem, 4.5vw, 1.15rem); }
 }
 
 /* Appointment Lifecycle Specialist tagline */
@@ -1345,8 +1279,7 @@ function Nav() {
     <nav className="nav">
       <div className="container nav-inner">
         <a href="#top" className="brand-lockup" onClick={close}>
-          <img className="bmark" src="/Wordmark_Only.svg" alt="" />
-          <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
+          <img className="nav-logo" src="/Primary_lockup_white.png" alt="Jesse Lopez Consulting" />
         </a>
         <div className="nav-right">
           <div className={`lang ${lang}`}>
@@ -1416,16 +1349,7 @@ function RoiCalc() {
   const presets = [["calc.mild", "mild"], ["calc.chaotic", "chaotic"], ["calc.archaic", "archaic"]];
 
   return (
-    <div className="calc calc-disabled">
-      {/* Coming Soon overlay */}
-      <div className="calc-cs-overlay">
-        <div className="calc-cs-badge">
-          <Icon name="clock" />
-          Coming Soon
-        </div>
-        <div className="calc-cs-sub">ROI Calculator — Launching Soon</div>
-      </div>
-
+    <div className="calc">
       <div className="calc-head">
         <div className="ico"><Icon name="calculator" /></div>
         <div>
@@ -1436,22 +1360,22 @@ function RoiCalc() {
 
       <div className="calc-g">
         <div className="calc-lr"><label>{t("calc.team")}</label><span className="calc-val">{team}</span></div>
-        <input className="slider" type="range" min="1" max="100" value={team} readOnly />
+        <input className="slider" type="range" min="1" max="100" value={team} onChange={e => setTeam(+e.target.value)} />
       </div>
       <div className="calc-g">
         <div className="calc-lr"><label>{t("calc.hours")}</label><span className="calc-val">{hours}h</span></div>
-        <input className="slider" type="range" min="1" max="40" value={hours} readOnly />
+        <input className="slider" type="range" min="1" max="40" value={hours} onChange={e => setHours(+e.target.value)} />
       </div>
       <div className="calc-g">
         <div className="calc-lr"><label>{t("calc.rate")}</label><span className="calc-val">${rate}</span></div>
-        <input className="slider" type="range" min="25" max="150" value={rate} readOnly />
+        <input className="slider" type="range" min="25" max="150" value={rate} onChange={e => setRate(+e.target.value)} />
       </div>
 
       <div className="calc-g">
         <div className="calc-lr"><label>{t("calc.state")}</label></div>
         <div className="presets">
           {presets.map(([k, v]) => (
-            <button key={v} className={`preset ${state === v ? "on" : ""}`} disabled>{t(k)}</button>
+            <button key={v} className={`preset ${state === v ? "on" : ""}`} onClick={() => setState(v)}>{t(k)}</button>
           ))}
         </div>
       </div>
@@ -1515,7 +1439,7 @@ function Hero() {
           </Reveal>
           <Reveal delay="d3">
             <div className="hero-actions">
-              <a href="/audit.html" className="btn btn-primary btn-pulse">{t("hero.cta1")}<Icon name="arrow-right" /></a>
+              <a href="#contact" className="btn btn-primary btn-pulse">{t("hero.cta1")}<Icon name="arrow-right" /></a>
               <a href="#work" className="btn btn-ghost">{t("hero.cta2")}</a>
             </div>
           </Reveal>
@@ -1599,10 +1523,8 @@ function Work() {
     ["03", "work.3t", "work.3d"],
   ];
   return (
-    <section className="s-dark s-pad" id="work" style={{ position: "relative", overflow: "hidden" }}>
-      <div className="work-section-bg" />
-      <div className="work-section-overlay" />
-      <div className="container" style={{ position: "relative", zIndex: 2 }}>
+    <section className="s-dark s-pad" id="work">
+      <div className="container">
         <Head eyebrow={t("work.eyebrow")} title={t("work.title")} sub={t("work.sub")} center dark />
         <div className="work-steps">
           {steps.map(([n, ti, d], i) => (
@@ -1648,7 +1570,7 @@ function Services() {
                   <div className="face face-back">
                     <h3>{t(ti)}</h3>
                     <p>{t(d)}</p>
-                    <a href="/audit.html" className="go">{t("nav.cta")}<Icon name="arrow-right" /></a>
+                    <a href="#contact" className="go">{t("nav.cta")}<Icon name="arrow-right" /></a>
                   </div>
                 </div>
               </TiltFlip>
@@ -1847,7 +1769,7 @@ function Footer() {
           </div>
           <div className="footer-col">
             <h4>{t("foot.c3")}</h4>
-            <a href="/audit.html">{t("foot.audit")}</a>
+            <a href="#contact">{t("foot.audit")}</a>
             <a href="mailto:jesse@jesselopezconsulting.com">{t("foot.email")}</a>
             <a href="#top">{t("foot.lang")}</a>
           </div>
