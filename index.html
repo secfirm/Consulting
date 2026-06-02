@@ -1746,9 +1746,8 @@ function Footer() {
       <div className="container">
         <div className="footer-top">
           <div>
-            <a href="#top" className="brand-lockup sm" style={{ marginBottom: 18 }}>
-              <img className="bmark" src="/Wordmark_Only.svg" alt="" />
-              <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
+            <a href="#top" style={{ marginBottom: 18, display: "inline-block" }}>
+              <img src="/Primary_lockup_white.png" alt="Jesse Lopez Consulting" style={{ height: 36, width: "auto" }} />
             </a>
             <p className="footer-tag">{t("foot.tag")}</p>
             <p style={{ color: "var(--fg-3)", fontSize: 12, marginTop: 14 }}>714-388-6080 · jesselopezconsulting.com</p>
@@ -1769,8 +1768,9 @@ function Footer() {
           </div>
           <div className="footer-col">
             <h4>{t("foot.c3")}</h4>
-            <a href="#contact">{t("foot.audit")}</a>
+            <a href="/audit.html">{t("foot.audit")}</a>
             <a href="mailto:jesse@jesselopezconsulting.com">{t("foot.email")}</a>
+            <a href="/support.html">Client Support</a>
             <a href="#top">{t("foot.lang")}</a>
           </div>
         </div>
