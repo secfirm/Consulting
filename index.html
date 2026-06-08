@@ -352,6 +352,18 @@ section{position:relative;}
 .ph-biz{color:var(--teal-400);font-size:.82rem;}
 .ph-label{color:var(--fg-3);font-size:.75rem;margin-top:4px;font-style:italic;}
 
+
+/* ============================================================
+   HOW WE WORK — lecture image background
+   ============================================================ */
+.work-with-bg{position:relative;overflow:hidden;}
+.work-bg-img{
+  position:absolute;inset:0;z-index:0;
+  background:url(https://raw.githubusercontent.com/secfirm/Consulting/main/Lecture5.jpg) center center / cover no-repeat;
+  opacity:0.08;
+  filter:grayscale(40%);
+}
+
 /* ============================================================
    HERO — NEW COPY LAYOUT
    ============================================================ */
@@ -827,8 +839,6 @@ function Nav(){
   const [mobile,setMobile]=React.useState(false);
   const links=[
     ["#about","About"],
-    ["#community","Community Mission"],
-    ["audit.html","Start the Conversation"],
   ];
   const close=()=>setMobile(false);
   return(
@@ -957,8 +967,9 @@ function Work(){
   const { t }=useT();
   const steps=[["01","work.1t","work.1d"],["02","work.2t","work.2d"],["03","work.3t","work.3d"]];
   return(
-    <section className="s-dark s-pad" id="work">
-      <div className="container">
+    <section className="s-dark s-pad work-with-bg" id="work">
+      <div className="work-bg-img" />
+      <div className="container" style={{position:"relative",zIndex:1}}>
         <Head eyebrow={t("work.eyebrow")} title={t("work.title")} sub={t("work.sub")} center dark />
         <div className="work-steps">
           {steps.map(([n,ti,d],i)=>(
@@ -1154,13 +1165,10 @@ function Footer(){
       <div className="container">
         <div className="footer-top footer-top-simple">
           <div>
-            <a href="#top" className="brand-lockup sm" style={{ marginBottom:18 }}>
-              <svg width="34" height="34" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,2 93,26 93,74 50,98 7,74 7,26" fill="none" stroke="rgba(45,212,191,0.3)" strokeWidth="2"/>
-                <path d="M30 35 L30 65 L38 65 L38 52 L46 52" stroke="#2DD4BF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-                <path d="M54 35 L54 65 M54 35 L62 35 L62 50 L54 50 M54 50 L64 65" stroke="#14B8A6" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              </svg>
-              <span className="bword"><b>Jesse Lopez</b><i>Consulting</i></span>
+            <a href="#top" style={{ display:"inline-block", marginBottom:18 }}>
+              <img src="https://raw.githubusercontent.com/secfirm/Consulting/main/Stacked_lockup_blue.png"
+                   alt="Jesse Lopez Consulting"
+                   style={{ height:"80px", width:"auto", display:"block" }} />
             </a>
             <p className="footer-tag">{t("foot.tag")}</p>
           </div>
