@@ -917,7 +917,7 @@ function Proof(){
     {q:"proof.q2",who:"Joan Toves",r:"proof.r2"},
   ];
   const placeholders=[
-    {who:"Tracy Johnson",biz:"A Taste of Tracy BBQ"},
+    {who:"Tracy Johnson",biz:"A Taste of Tracy BBQ",url:"https://atasteoftracy.com/"},
   ];
   return(
     <section className="s-dark s-pad" id="proof">
@@ -943,12 +943,14 @@ function Proof(){
               </TiltFlip>
             </Reveal>
           ))}
-          {placeholders.map(({who,biz})=>(
+          {placeholders.map(({who,biz,url})=>(
             <Reveal key={who} delay="d3">
               <div className="quote-placeholder">
                 <div className="ph-avatar"><Icon name="user" /></div>
                 <div className="ph-who">{who}</div>
-                <div className="ph-biz">{biz}</div>
+                <div className="ph-biz">
+                  {url ? <a href={url} target="_blank" rel="noopener" style={{color:"inherit",textDecoration:"underline",textUnderlineOffset:"3px"}}>{biz}</a> : biz}
+                </div>
                 <div className="ph-label">Testimonial coming soon</div>
               </div>
             </Reveal>
